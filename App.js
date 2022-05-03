@@ -9,8 +9,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {Home} from "./components/Home"
 import {Login} from "./components/Login"
 import { FirstScreen } from './components/FirstScreen';
-
+import { Profile } from './components/Profile';
 const Stack = createStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
 
@@ -24,8 +27,11 @@ export default function App() {
     <Stack.Screen name="LongStay Villa" component={FirstScreen} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Home" component={Home} />
+    
     </Stack.Navigator>
+    
   </NavigationContainer>
+  
   )
 }
 

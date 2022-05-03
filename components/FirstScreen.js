@@ -11,7 +11,7 @@ import {
 } from "@expo-google-fonts/montserrat";
 //AiOutlineArrowRight
 //import { Navigate, useNavigate,Router } from 'react-router';
-const image = {require:(Image_data[0])}
+
 
 export const FirstScreen = () => {
 
@@ -45,7 +45,7 @@ export const FirstScreen = () => {
             onPress={()=> navigation.navigate('Login',{ name: 'Login' })}
             >
             <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <Text style={{color:'white',fontFamily:'Montserrat_500Medium',fontSize:12}}>GET STARTED</Text>
+                    {fontsLoaded?<Text style={{color:'white',fontFamily:'Montserrat_500Medium',fontSize:12}}>GET STARTED</Text>:null}
             <Icon name="arrowright" size={20} color="white" />
             </View>
          </TouchableOpacity>

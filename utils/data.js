@@ -1,3 +1,3 @@
 export const Image_data = {
-   Image: require("./images/villa4.jpg")
+   Image: require("./images/004_villa.jpg")
 }
