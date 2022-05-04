@@ -9,7 +9,7 @@ export const Home = () => {
       
       <Text> Home </Text>
       <View>
-       
+      
       </View>
     </View>
   )
