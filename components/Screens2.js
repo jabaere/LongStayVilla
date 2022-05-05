@@ -1,5 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {Text} from 'react-native'
 import { Home } from "./Home";
 import { Location } from "./Location";
 import { Booking } from "./Booking";
@@ -7,12 +8,15 @@ import { Profile } from "./Profile";
 import { More } from "./More";
 import { Login } from "./Login";
 import { FirstScreen } from "./FirstScreen";
-
+import { Details } from "./Details";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconHome from "react-native-vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
+import HeaderIcon from "react-native-vector-icons/MaterialIcons";
 const Tab = createBottomTabNavigator();
 
 const Screens2 = () => {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -41,7 +45,30 @@ const Screens2 = () => {
         },
         tabBarActiveTintColor: "#B2002D",
         tabBarInactiveTintColor: "gray",
-        headerShown: false,
+        headerShown: route.name === 'Details' || route.name === 'Profile' || route.name === 'Booking' || route.name === 'Location' ? true : false,
+        headerTitle: route.name === 'Profile' || route.name === 'Location' ? " "
+        :route.name === 'Booking' ? `${route.name} History`
+        :route.name,
+        headerStyle: { backgroundColor: 'inherit', borderWidth:0 },
+        headerTitleStyle: { color: '#B2002D',fontFamily: "Montserrat_500Medium",fontSize:14 },
+        headerLeft: () => 
+        <HeaderIcon 
+            onPress={navigation.goBack} 
+            name='arrow-back-ios' 
+            color='#B2002D' 
+            size={20}
+            style={{marginLeft:20,marginRight:-18}}
+            />,
+        headerRight: () => 
+             <Text 
+              style={{
+                color: '#B2002D',
+                fontFamily: "Montserrat_500Medium",
+                marginRight:30,
+                marginLeft:-5
+              }}>
+                {route.name === 'Details' ? `Price ${route.params.price}`: null}
+             </Text>
       })}
     >
       <Tab.Screen
@@ -69,6 +96,18 @@ const Screens2 = () => {
       <Tab.Screen name="Booking" component={Booking} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="More" component={More} />
+      <Tab.Screen
+        name="Details"
+        component={Details}
+        options={() => ({
+          tabBarStyle: {
+            display: "none",
+          },
+          tabBarButton: () => null,
+          
+          
+        })}
+      />
     </Tab.Navigator>
   );
 };
