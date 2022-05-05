@@ -12,8 +12,8 @@ import {
     Montserrat_700Bold,
   } from "@expo-google-fonts/montserrat";
 
-import Icon from "react-native-vector-icons/Ionicons";
-
+import IconShare from "react-native-vector-icons/FontAwesome5";
+import BookIcon from "react-native-vector-icons/MaterialIcons";
 
 export const DetailsPage = ({item}) => {
   
@@ -23,7 +23,7 @@ export const DetailsPage = ({item}) => {
          <Image source={item.image} style={styles.image}/>
       </View>
        
-       
+       {/* top buttons*/}
         <View style={styles.cardBottom}>
        
         <TouchableOpacity 
@@ -53,10 +53,71 @@ export const DetailsPage = ({item}) => {
                Reviews
             </Text>
         </TouchableOpacity>
+
         </View> 
+         {/* middle content*/}
         
+        <View style={{width:'80%', justifyContent:'space-between',flexDirection:"row",marginTop:20,marginLeft:30}}>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>BADROOM</Text>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>{0}{item.badroom}</Text>
+        </View>
      
-    
+        
+        <View style={{
+          width:'80%', 
+          justifyContent:'space-between',
+          flexDirection:"row",
+          marginTop:50,
+          marginLeft:30
+          }}>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>TOTAL AREA</Text>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>{`${item.totalArea} sq ft (${Math.round(item.totalArea/10.764)} m2) `}</Text>
+        </View>
+        <View style={{
+           justifyContent:'center',
+           marginTop:70, 
+           width:'80%',
+           alignItems:'center',
+           marginLeft:30,
+          }}>
+           <Text style={{fontSize:17, fontFamily:'Montserrat_500Medium'}}>{item.detailsDescription}</Text>
+        </View>
+
+        {/* bottom buttons*/}
+        <View style={styles.cardBottom2}>
+       
+       <TouchableOpacity 
+          style={styles.shareButton}
+          
+          >
+           <Text style={{
+              fontFamily:'Montserrat_700Bold',
+              color:'gray',
+              margin: 9
+              }}>
+               SHARE THIS
+           </Text>
+           <IconShare size={25} color='gray' name='arrow-circle-up'/>
+       </TouchableOpacity>
+       <TouchableOpacity style={styles.bookButton}>
+           <Text style={{
+              fontFamily:'Montserrat_700Bold',
+              color:'white',
+              margin:9
+              }}>
+              Book
+           </Text>
+           <View style={{
+             backgroundColor:'white',
+             borderRadius:50,
+             width:29,
+             height:29,
+             alignItems:'center',
+             justifyContent:'center'}}>
+             <BookIcon name='arrow-forward-ios' size={18} color='red'/>
+           </View>
+       </TouchableOpacity>
+    </View> 
         
     </View>
     
@@ -81,7 +142,7 @@ const styles = StyleSheet.create({
     },
     image: {
       margin:2,
-      marginTop:80,
+      marginTop:20,
       height:250,
       width:"98%",
       borderWidth: 1,
@@ -97,12 +158,42 @@ const styles = StyleSheet.create({
       alignContent: "center",
       
     },
-   
     cardBottom:{
-        display:'flex',
+        
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'flex-end',
         alignContent:'flex-end'
-    }
+    },
+    cardBottom2:{
+      margin:7,
+      marginTop: 70,
+      flexDirection:'row',
+      justifyContent:'space-between',
+      alignItems:'center',
+      width:'auto',
+
+  },
+    bookButton:{
+     
+      flexDirection:'row',
+      justifyContent:'space-around',
+      alignItems:'center',
+      width: 150,
+      height:40,
+      backgroundColor: "#B2002D",
+      borderRadius:50,
+      
+  },
+  shareButton:{
+     
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems:'center',
+    width: 150,
+    height:40,
+    backgroundColor: "white",
+    borderRadius:50,
+    
+}
   });

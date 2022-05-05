@@ -8,69 +8,99 @@ export const Villa_API = [
       image:require("./images/001_villa.jpg"), 
       description:'Villa Jane will astonish every guest with its breathtaking views',
       price:'$2000',
-      location:'Aspen'
+      location:'Aspen',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:2, 
       image:require("./images/002_villa.jpg"), 
       description:'An ultra-exclusive mountain home Ranch-inspired luxury living',
       price:'$3500',
-      location:'Aspen'
+      location:'Aspen',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:3, 
       image:require("./images/003_villa.jpg"), 
       description:'Villa Jane will astonish every guest with its breathtaking views',
       price:'$9000',
-      location:'Gurjaani'
+      location:'Gurjaani',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:4, 
       image:require("./images/004_villa.jpg"), 
       description:'An ultra-exclusive mountain home Ranch-inspired luxury living',
       price:'$1700',
-      location:'Batumi'
+      location:'Batumi',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:5, 
       image:require("./images/005_villa.jpg"), 
       description:'Villa Jane will astonish every guest with its breathtaking views',
       price:'$3600',
-      location:'Lagodekhi'
+      location:'Lagodekhi',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:6, 
       Image:require("./images/006_villa.jpg"), 
       description:'An ultra-exclusive mountain home Ranch-inspired luxury living',
       price:'$1200',
-      location:'Sagarejo'
+      location:'Sagarejo',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:7, 
       image:require("./images/007_villa.jpg"), 
       description:'Villa Jane will astonish every guest with its breathtaking views',
       price:'$4000',
-      location:'Rustavi'
+      location:'Rustavi',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:8, 
       image:require("./images/008_villa.jpg"), 
       description:'An ultra-exclusive mountain home Ranch-inspired luxury living',
       price:'$2000',
-      location:'Tbilisi'
+      location:'Tbilisi',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:9, 
       image:require("./images/009_villa.jpg"), 
       description:'Villa Jane will astonish every guest with its breathtaking views',
       price:'$8000',
-      location:'Borjomi'
+      location:'Borjomi',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    },
    {
       id:10, 
       image:require("./images/010_villa.jpg"), 
       description:'An ultra-exclusive mountain home Ranch-inspired luxury living',
       price:'$5000',
-      location:'Bakuriani'
+      location:'Bakuriani',
+      badroom:5,
+      totalArea: 7600,
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    }
 ]
