@@ -42,7 +42,7 @@ export const Login = () => {
               Login Account
             </Text>
           </View>
-          <SafeAreaView>
+          
           <Text style={styles.textLabel}>Email</Text>
           {<TextInput
             style={styles.input}
@@ -51,7 +51,7 @@ export const Login = () => {
           {<TextInput
             style={styles.input}
           />}
-          </SafeAreaView>
+         
 
           <TouchableOpacity
             style={styles.button}
