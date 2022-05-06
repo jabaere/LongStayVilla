@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect,useState} from "react";
 import {
   Text,
   View,
@@ -15,41 +15,63 @@ import {
 import IconShare from "react-native-vector-icons/FontAwesome5";
 import BookIcon from "react-native-vector-icons/MaterialIcons";
 
+
 export const DetailsPage = ({item}) => {
+  const [active,setActive] = useState({
+    amiantus:false,
+    details:true,
+    reviews:false
+  })
+
+  useEffect(()=> {
+
+  },[active])
   
   return (
     <View style={styles.container}>
       <View style={{justifyContent:'center',alignItems:'center'}}>
          <Image source={item.image} style={styles.image}/>
       </View>
-       
+      <View style={{width:'60%',justifyContent:"space-around",flexDirection:'row',marginTop:20,marginLeft:'20%'}}>
+        <View style={active.amiantus ? styles.dot : {...styles.dot, ...styles.opacity}}></View>
+        <View style={active.details ? styles.dot : {...styles.dot, ...styles.opacity}}></View>
+        <View style={active.reviews ? styles.dot : {...styles.dot, ...styles.opacity}}></View>
+       </View>
        {/* top buttons*/}
         <View style={styles.cardBottom}>
        
         <TouchableOpacity 
            style={styles.button}
-           
+           onPress={()=>setActive({
+            amiantus:true,
+            details:false,
+            reviews:false
+           })}
            >
-            <Text style={{
-               fontFamily:'Montserrat_500Medium',
-               color:'gray'
-               }}>
+            <Text style={active.amiantus ?  {...styles.commonText, ...styles.activeText} : styles.commonText}>
                 Amiantus
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-            <Text style={{
-               fontFamily:'Montserrat_500Medium',
-               color:'gray'
-               }}>
+        <TouchableOpacity 
+           style={styles.button}     
+           onPress={()=>setActive({
+            amiantus:false,
+            details:true,
+            reviews:false
+           })}>
+            <Text style={active.details ? {...styles.commonText, ...styles.activeText} : styles.commonText}>
                Details
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-            <Text style={{
-               fontFamily:'Montserrat_500Medium',
-               color:'gray'
-               }}>
+        <TouchableOpacity 
+           style={styles.button}
+           onPress={()=>setActive({
+              amiantus:false,
+              details:false,
+              reviews:true
+           })}
+           >
+            <Text style={active.reviews ? {...styles.commonText, ...styles.activeText} : styles.commonText}>
                Reviews
             </Text>
         </TouchableOpacity>
@@ -58,8 +80,8 @@ export const DetailsPage = ({item}) => {
          {/* middle content*/}
         
         <View style={{width:'80%', justifyContent:'space-between',flexDirection:"row",marginTop:20,marginLeft:30}}>
-            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>BADROOM</Text>
-            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>{0}{item.badroom}</Text>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray',fontSize:12}}>BADROOM</Text>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray',fontSize:12}}>{0}{item.badroom}</Text>
         </View>
      
         
@@ -70,8 +92,8 @@ export const DetailsPage = ({item}) => {
           marginTop:50,
           marginLeft:30
           }}>
-            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>TOTAL AREA</Text>
-            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray'}}>{`${item.totalArea} sq ft (${Math.round(item.totalArea/10.764)} m2) `}</Text>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray',fontSize:12}}>TOTAL AREA</Text>
+            <Text style={{fontFamily:'Montserrat_500Medium',color:'gray',fontSize:12}}>{`${item.totalArea} sq ft (${Math.round(item.totalArea/10.764)} m2) `}</Text>
         </View>
         <View style={{
            justifyContent:'center',
@@ -159,7 +181,7 @@ const styles = StyleSheet.create({
       
     },
     cardBottom:{
-        
+         marginTop:10,
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'flex-end',
@@ -195,5 +217,22 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius:50,
     
+},
+dot:{
+  backgroundColor:'gray',
+  width:7,
+  height:7,
+  borderRadius:50
+},
+opacity:{
+  opacity:0.5
+},
+activeText:{
+  color:'#B2002D'
+},
+commonText:{
+  fontFamily:'Montserrat_500Medium',
+  color:'gray',
+  fontSize:15
 }
   });
