@@ -14,14 +14,18 @@ import {
 
 import IconShare from "react-native-vector-icons/FontAwesome5";
 import BookIcon from "react-native-vector-icons/MaterialIcons";
-
+import {Reviews} from "../components/Reviews"
+import {Amiantus} from "../components/Amiantus"
+import ConfirmModal from "../components/ConfirmModal"
 
 export const DetailsPage = ({item}) => {
   const [active,setActive] = useState({
     amiantus:false,
     details:true,
     reviews:false
-  })
+  });
+
+  const [modalVisible,setModalVisible] = useState(false)
 
   useEffect(()=> {
 
@@ -78,7 +82,8 @@ export const DetailsPage = ({item}) => {
 
         </View> 
          {/* middle content*/}
-        
+        {active.details ?
+        <>
         <View style={{width:'80%', justifyContent:'space-between',flexDirection:"row",marginTop:20,marginLeft:30}}>
             <Text style={{fontFamily:'Montserrat_500Medium',color:'gray',fontSize:12}}>BADROOM</Text>
             <Text style={{fontFamily:'Montserrat_500Medium',color:'gray',fontSize:12}}>{0}{item.badroom}</Text>
@@ -104,7 +109,11 @@ export const DetailsPage = ({item}) => {
           }}>
            <Text style={{fontSize:17, fontFamily:'Montserrat_500Medium'}}>{item.detailsDescription}</Text>
         </View>
-
+        </>
+        : active.amiantus ? <Amiantus/>
+        : active.reviews ? <Reviews/>
+        : null
+        }
         {/* bottom buttons*/}
         <View style={styles.cardBottom2}>
        
@@ -121,8 +130,11 @@ export const DetailsPage = ({item}) => {
            </Text>
            <IconShare size={25} color='gray' name='arrow-circle-up'/>
        </TouchableOpacity>
-       <TouchableOpacity style={styles.bookButton}>
-           <Text style={{
+       <TouchableOpacity style={styles.bookButton} onPress={() => setModalVisible(true)}>
+         <ConfirmModal/>
+         {/*
+
+         <Text style={{
               fontFamily:'Montserrat_700Bold',
               color:'white',
               margin:9
@@ -138,9 +150,16 @@ export const DetailsPage = ({item}) => {
              justifyContent:'center'}}>
              <BookIcon name='arrow-forward-ios' size={18} color='red'/>
            </View>
+
+
+
+
+            */
+          }
+        
        </TouchableOpacity>
     </View> 
-        
+    
     </View>
     
   )
@@ -189,12 +208,12 @@ const styles = StyleSheet.create({
     },
     cardBottom2:{
       margin:7,
-      marginTop: 70,
+      marginTop: 60,
       flexDirection:'row',
       justifyContent:'space-between',
       alignItems:'center',
       width:'auto',
-
+      
   },
     bookButton:{
      

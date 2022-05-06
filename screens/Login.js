@@ -42,16 +42,16 @@ export const Login = () => {
               Login Account
             </Text>
           </View>
-          <SafeAreaView>
+          
           <Text style={styles.textLabel}>Email</Text>
-          {/*<TextInput
+          {<TextInput
             style={styles.input}
-            />*/}
+            />}
           <Text style={styles.textLabel}>Password</Text>
-          {/*<TextInput
+          {<TextInput
             style={styles.input}
-          />*/}
-          </SafeAreaView>
+          />}
+        
 
           <TouchableOpacity
             style={styles.button}

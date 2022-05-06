@@ -1,14 +1,14 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Text} from 'react-native'
-import { Home } from "./Home";
-import { Location } from "./Location";
-import { Booking } from "./Booking";
-import { Profile } from "./Profile";
-import { More } from "./More";
-import { Login } from "./Login";
-import { FirstScreen } from "./FirstScreen";
-import { Details } from "./Details";
+import { Home } from "../screens/Home";
+import { Location } from "../screens/Location";
+import { Booking } from "../screens/Booking";
+import { Profile } from "../screens/Profile";
+import { More } from "../screens/More";
+import { Login } from "../screens/Login";
+import { FirstScreen } from "../screens/FirstScreen";
+import { Details } from "../screens/Details";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconHome from "react-native-vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
