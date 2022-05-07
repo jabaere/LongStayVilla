@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import BookIcon from "react-native-vector-icons/MaterialIcons";
+import { useNavigation } from "@react-navigation/native";
+import BookModal from "./BookModal";
 const ConfirmModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -17,7 +20,7 @@ const ConfirmModal = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Are you shure you want to Book Villa?</Text>
-            <View style={{flexDirection:'row',marginLeft:90,height:'20%'}}>
+            <View style={{flexDirection:'row',marginLeft:90,height:'20%',alignItems:'baseline'}}>
             <Pressable
               style={styles.Confirmbutton}
               onPress={() => setModalVisible(!modalVisible)}
@@ -26,9 +29,12 @@ const ConfirmModal = () => {
             </Pressable>
             <Pressable
               style={styles.Confirmbutton}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={() => (setModalVisible(!modalVisible)
+               // navigation.navigate("BookModal", { name: "BookModal"})
+              
+             )}  
             >
-              <Text style={styles.textStyle}>YES</Text>
+               <BookModal setModalVisible={setModalVisible} modalVisible={true}></BookModal>
             </Pressable>
             </View>
           </View>
@@ -55,6 +61,7 @@ const ConfirmModal = () => {
              <BookIcon name='arrow-forward-ios' size={18} color='red'/>
            </View>
       </Pressable>
+   
     </View>
   );
 };

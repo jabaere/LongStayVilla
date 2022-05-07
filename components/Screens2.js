@@ -13,6 +13,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import IconHome from "react-native-vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import HeaderIcon from "react-native-vector-icons/MaterialIcons";
+import BookModal from "./BookModal";
 const Tab = createBottomTabNavigator();
 
 const Screens2 = () => {
@@ -99,6 +100,18 @@ const Screens2 = () => {
       <Tab.Screen
         name="Details"
         component={Details}
+        options={() => ({
+          tabBarStyle: {
+            display: "none",
+          },
+          tabBarButton: () => null,
+          
+          
+        })}
+      />
+       <Tab.Screen
+        name="BookModal"
+        component={BookModal}
         options={() => ({
           tabBarStyle: {
             display: "none",
