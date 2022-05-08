@@ -4,20 +4,20 @@ import BookIcon from "react-native-vector-icons/MaterialIcons";
 
 import CloseIcon from "react-native-vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
-import { Card } from "../components/Card";
+import { Card } from "./Card";
 
 import LocationIcon from "react-native-vector-icons/EvilIcons";
 import CreditcardIcon from "react-native-vector-icons/AntDesign";
 import WalletIcon from "react-native-vector-icons/Ionicons";
 import LanguageIcon from "react-native-vector-icons/FontAwesome5";
 import MoreIcon from "react-native-vector-icons/MaterialIcons";
-export const More = () => {
+import MenuIcon from "react-native-vector-icons/Ionicons";
+export const MoreModal = (open) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [reloadModal,setReloadModal] = useState(false)
+  
   const navigation = useNavigation();
-  useEffect(()=> {
-    setModalVisible(true)
-  },[reloadModal])
+
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -34,8 +34,8 @@ export const More = () => {
             <Pressable 
                style={{width:'100%',alignItems:'flex-end',marginTop:10}}
                onPress={() => (
-                setReloadModal(true),
-                 setModalVisible(false)
+                
+                setModalVisible(!modalVisible)
                  )}
                >
                <CloseIcon name='close' color="#B2002D" size={32}/>
@@ -58,18 +58,29 @@ export const More = () => {
           </View>
         </View>
       </Modal>
-     
+       <View style={{alignItems:'center',justifyContent:'center',alignContent:'center',height:50}}>
+           <Pressable 
+              onPress={()=> setModalVisible(true)}
+             >
+           <MenuIcon name={'menu-outline'} size={26} color={'gray'} />
+           <Text style={{color:'gray',fontSize:12}}>More</Text>
+           </Pressable>
+       </View>
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   centeredView: {
-  flex:1
+  
+    flex:1,
+
   },
   modalView: {
+   
     width:'100%',
-    height:'80%',
+    height:'93%',
     backgroundColor: "#edede9",
     padding: 30,
     paddingLeft:10,

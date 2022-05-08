@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, StyleSheet,FlatList } from 'react-native';
 import  Villa  from '../layout/Villa';
-import { Villa_API } from '../utils/data';
+import { Villa_API } from '../api/data';
 import { useNavigation } from "@react-navigation/native";
 
 export const Home = () => {

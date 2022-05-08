@@ -1,6 +1,10 @@
 export const Image_data = {
    Image: require("./images/004_villa.jpg")
 }
+export const Image_profile = {
+   Image: require("./images/vin.jpg")
+}
+
 
 export const Villa_API = [
    {

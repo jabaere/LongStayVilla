@@ -64,8 +64,8 @@ export default Villa
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      
-    marginVertical: 8
+      marginTop:30,
+    
      
     },
     headerTitle: {

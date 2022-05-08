@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useLayoutEffect} from 'react'
 import { Text, View, StyleSheet,Image,Button,TouchableOpacity,TextInput,SafeAreaView,FlatList } from 'react-native';
-import { Villa_API } from '../utils/data';
+import { Villa_API } from '../api/data';
 import {DetailsPage} from '../layout/DetailsPage'
 
 

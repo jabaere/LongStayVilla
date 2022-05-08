@@ -42,7 +42,7 @@ export const Login = () => {
               Login Account
             </Text>
           </View>
-          
+          {/* textinput component cause error ---  */}
           <Text style={styles.textLabel}>Email</Text>
           {<TextInput
             style={styles.input}

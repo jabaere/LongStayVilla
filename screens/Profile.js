@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Alert, Modal, StyleSheet, Text, Pressable, View,Image,TouchableOpacity } from "react-native";
 import BookIcon from "react-native-vector-icons/MaterialIcons";
 
 import CloseIcon from "react-native-vector-icons/AntDesign";
@@ -11,6 +11,8 @@ import ParachuteIcon from "react-native-vector-icons/FontAwesome5";
 import WalletIcon from "react-native-vector-icons/Ionicons";
 import StarIcon from "react-native-vector-icons/AntDesign";
 import MoreIcon from "react-native-vector-icons/MaterialIcons";
+import {Image_profile} from '../api/data'
+
 export const Profile = () => {
   const [modalVisible, setModalVisible] = useState(true);
   const [reloadModal,setReloadModal] = useState(false)
@@ -20,6 +22,18 @@ export const Profile = () => {
   },[reloadModal])
   return (
     <View style={styles.centeredView}>
+      <View style={{flexDirection:'row',width:'100%',padding:10}}>
+         <View>
+           <Image source={Image_profile.Image} style={{width:100,height:100,borderRadius:50}}/>
+         </View>
+        <View style={{flexDirection:'column',padding:5, marginLeft:20}}>
+           <Text style={{ fontFamily: "Montserrat_700Bold",color:'gray',fontSize:22}}>Jane Doe</Text>
+           <Text style={{ fontFamily: "Montserrat_500Medium",color:'gray'}}>Janedoe123@gmail.com</Text>
+           <TouchableOpacity style={styles.button}>
+              <Text style={{ fontFamily: "Montserrat_700Bold",color:'gray',fontSize:15}}>EDIT PROFILE</Text>
+           </TouchableOpacity>
+        </View>
+      </View>
      
         
            
@@ -42,8 +56,6 @@ export const Profile = () => {
 const styles = StyleSheet.create({
   centeredView: {
     flex:1,
-    width:'100%',
-    height:'80%',
     backgroundColor: "#edede9",
     padding: 30,
     paddingLeft:10,
@@ -60,6 +72,17 @@ const styles = StyleSheet.create({
   width:'100%',
   color: "#B2002D",
   },
+  button: {
+    width:150,
+    height:40,
+    justifyContent:'center',
+    alignItems:'center',
+    borderWidth:1,
+    borderColor: '#2f3e46',
+    borderRadius:50,
+    marginTop:10,
+    marginBottom:10
+  }
 
 });
 

@@ -5,7 +5,7 @@ import { Home } from "../screens/Home";
 import { Location } from "../screens/Location";
 import { Booking } from "../screens/Booking";
 import { Profile } from "../screens/Profile";
-import { More } from "../screens/More";
+import { MoreModal } from "../components/MoreModal";
 import { Login } from "../screens/Login";
 import { FirstScreen } from "../screens/FirstScreen";
 import { Details } from "../screens/Details";
@@ -15,6 +15,10 @@ import { useNavigation } from "@react-navigation/native";
 import HeaderIcon from "react-native-vector-icons/MaterialIcons";
 import BookModal from "./BookModal";
 const Tab = createBottomTabNavigator();
+
+const MyModalBackgroundScreen = () => {
+  return null;
+};
 
 const Screens2 = () => {
   const navigation = useNavigation();
@@ -38,11 +42,9 @@ const Screens2 = () => {
           }
 
           // You can return any component that you like here!
-          return route.name !== "More" ? (
+          return (
             <IconHome name={iconName} size={size} color={color} />
-          ) : (
-            <Icon name={menuIcon} size={size} color={color} />
-          );
+          ) 
         },
         tabBarActiveTintColor: "#B2002D",
         tabBarInactiveTintColor: "gray",
@@ -96,7 +98,29 @@ const Screens2 = () => {
       <Tab.Screen name="Location" component={Location} />
       <Tab.Screen name="Booking" component={Booking} />
       <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="More" component={More} />
+      <Tab.Screen 
+         name="More" 
+         component={MyModalBackgroundScreen} 
+         
+         /*listeners={() => ({
+           tabPress: event => {
+             event.preventDefault();
+             navigation.navigate("More",{ name: "Details",modalVisible:true})
+           }
+         })
+        }
+
+        */
+        options={{
+          
+          tabBarLabel: ({}) => {
+            return null; //no label will be displayed
+          },
+          tabBarButton: () => {
+            return <MoreModal open={true} />
+          },
+        }}
+         />
       <Tab.Screen
         name="Details"
         component={Details}

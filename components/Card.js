@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useLayoutEffect} from 'react'
 import { Text, View, StyleSheet,Image,Button,TouchableOpacity,TextInput,SafeAreaView,FlatList } from 'react-native';
-import { Villa_API } from '../utils/data';
+import { Villa_API } from '../api/data';
 import {DetailsPage} from '../layout/DetailsPage'
 
 const CardItem = ({item}) => {
@@ -18,8 +18,10 @@ const CardItem = ({item}) => {
          height:60,
          alignContent:'center',
          alignItems:'center',
-         borderRadius:6,
-      
+         borderTopRightRadius:6,
+         borderBottomRightRadius:6,
+         borderBottomLeftRadius: item.description === 'Feedback' || item.description === 'Language' ? 6 : 0,
+         borderTopLeftRadius: item.description === 'All My Booking' || item.description === 'Booking Address'? 6 : 0
         
          }}>
        <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -27,12 +29,12 @@ const CardItem = ({item}) => {
              <Text>{item.firstIcon}</Text>
          </View>
          <View style={{marginLeft:20}}>
-             <Text>{item.description}</Text>
+             <Text style={{color:'gray',fontSize:17,fontFamily: "Montserrat_500Medium"}}>{item.description}</Text>
          </View>
        </View>
          {item.currency || item.language ? <>
-          <View><Text>{item.currency}</Text></View>
-          <View><Text>{item.language}</Text></View>
+          <View><Text style={{fontFamily: "Montserrat_500Medium",color:'gray'}}>{item.currency}</Text></View>
+          <View><Text style={{fontFamily: "Montserrat_500Medium",color:'gray'}}>{item.language}</Text></View>
           </>
          
          : null}
@@ -49,9 +51,9 @@ const CardItem = ({item}) => {
          </View>
         
      </View>
-     {item.description !== 'Feedback' || item.description === 'Feedback' ? <View style={{justifyContent:'center',flexDirection:'row'}}>
+     {item.description !== 'Language' && item.description !== 'Feedback' ? <View style={{justifyContent:'center',flexDirection:'row'}}>
         <View style={{width:'30%',height:1, backgroundColor:'white',alignSelf:'flex-start'}}></View>
-        <View style={{width:'70%',height:1, backgroundColor:'gray',alignSelf:'flex-end'}}></View>
+        <View style={{width:'70%',height:1, backgroundColor:'#edede9',alignSelf:'flex-end'}}></View>
      </View>
      :
      null
