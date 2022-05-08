@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {Text} from 'react-native'
+import { Alert, Modal, StyleSheet, Text, Pressable, View,TextInput } from "react-native";
 import { Home } from "../screens/Home";
 import { Location } from "../screens/Location";
 import { Booking } from "../screens/Booking";
@@ -11,9 +11,12 @@ import { FirstScreen } from "../screens/FirstScreen";
 import { Details } from "../screens/Details";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconHome from "react-native-vector-icons/AntDesign";
+import FilterIcon from "react-native-vector-icons/Feather";
 import { useNavigation } from "@react-navigation/native";
 import HeaderIcon from "react-native-vector-icons/MaterialIcons";
 import BookModal from "./BookModal";
+import {FilteredData} from '../screens/Location'
+import {SearchBar} from '../screens/Location'
 const Tab = createBottomTabNavigator();
 
 const MyModalBackgroundScreen = () => {
@@ -46,32 +49,44 @@ const Screens2 = () => {
             <IconHome name={iconName} size={size} color={color} />
           ) 
         },
+        tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: "#B2002D",
         tabBarInactiveTintColor: "gray",
         headerShown: route.name === 'Details' || route.name === 'Profile' || route.name === 'Booking' || route.name === 'Location' ? true : false,
         headerTitle: route.name === 'Profile' || route.name === 'Location' ? " "
         :route.name === 'Booking' ? `${route.name} History`
         :route.name,
-        headerStyle: { backgroundColor: 'inherit', borderWidth:0 },
+        headerStyle: { backgroundColor: 'inherit', borderWidth:0,},
         headerTitleStyle: { color: '#B2002D',fontFamily: "Montserrat_500Medium",fontSize:14 },
-        headerLeft: () => 
+        headerLeft: () =>(
+          
         <HeaderIcon 
             onPress={navigation.goBack} 
             name='arrow-back-ios' 
             color='#B2002D' 
             size={20}
-            style={{marginLeft:20,marginRight:-18}}
-            />,
-        headerRight: () => 
+            style={{marginLeft:20,marginRight:0}}
+            />
+
+          
+           
+        ),
+        headerRight: () => (
              <Text 
               style={{
                 color: '#B2002D',
                 fontFamily: "Montserrat_500Medium",
-                marginRight:30,
-                marginLeft:-5
+                marginRight:0,
+                marginLeft:-4
               }}>
                 {route.name === 'Details' ? `Price ${route.params.price}`: null}
-             </Text>
+                
+             </Text>,
+               route.name ==='Location' ?   <SearchBar/>
+              :
+              null
+        )
+             
       })}
     >
       <Tab.Screen

@@ -51,7 +51,7 @@ const CardItem = ({item}) => {
          </View>
         
      </View>
-     {item.description !== 'Language' && item.description !== 'Feedback' ? <View style={{justifyContent:'center',flexDirection:'row'}}>
+     {item.description !== 'Language' || item.description !== 'Feedback' ? <View style={{justifyContent:'center',flexDirection:'row'}}>
         <View style={{width:'30%',height:1, backgroundColor:'white',alignSelf:'flex-start'}}></View>
         <View style={{width:'70%',height:1, backgroundColor:'#edede9',alignSelf:'flex-end'}}></View>
      </View>

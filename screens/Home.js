@@ -17,15 +17,11 @@ export const Home = () => {
             navigation.navigate("Details", { name: "Details",itemId:item.id,price:item.price }),
           console.log('hadlemore' + ' ' + item.id)
          
-          )
+          )} 
          
-        
-        } 
-         
-          />}
-          
-          keyExtractor={item => item.id}
-          
+          />
+          }
+         keyExtractor={item => item.id}
       />
       {/*
         Villa_API.map((item,index) => (

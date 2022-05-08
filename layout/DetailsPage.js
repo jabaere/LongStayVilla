@@ -131,7 +131,7 @@ export const DetailsPage = ({item}) => {
            <IconShare size={25} color='gray' name='arrow-circle-up'/>
        </TouchableOpacity>
        <TouchableOpacity style={styles.bookButton} onPress={() => setModalVisible(true)}>
-         <ConfirmModal/>
+         <ConfirmModal item={item}/>
          {/*
 
          <Text style={{

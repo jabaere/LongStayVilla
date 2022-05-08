@@ -56,6 +56,7 @@ export const FirstScreen = () => {
                   color: "white",
                   fontFamily: "Montserrat_500Medium",
                   fontSize: 12,
+                  margin:2
                 }}
               >
                 GET STARTED

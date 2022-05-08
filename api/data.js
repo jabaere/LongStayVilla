@@ -108,3 +108,22 @@ export const Villa_API = [
       detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
    }
 ]
+
+export const BookingData = [
+   {
+      id:32,
+      image:require("./images/010_villa.jpg"),
+      price:7600,totalPrice:16200,checkInDate:'',
+      checkOutDate:'',
+      location:'Bakuriani',
+      detailsDescription:'A chalet-style Aspen home that combines privacy with in-town'
+   }
+]
+
+export const AddVilla = async (item) => {
+   return(
+   console.log(item),
+   console.log('item from addvilla'),
+    BookingData.push(item)
+   )
+}

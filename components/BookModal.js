@@ -4,10 +4,19 @@ import BookIcon from "react-native-vector-icons/MaterialIcons";
 
 import CloseIcon from "react-native-vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
+import {AddVilla} from '../api/data'
 
-
-const BookModal = ({setModalVisible}) => {
+const BookModal = ({setModalVisible,item}) => {
   const [BookModalVisible, setBookModalVisible] = useState(false);
+  const [villa,setVilaa] = useState({
+    id:'',
+    image:0,
+    price:'',
+    totalPrice:'',
+    checkInDate:'',
+    checkOutDate:'',
+    location:''
+  });
   const navigation = useNavigation();
   return (
     <View style={styles.centeredView}>
@@ -116,7 +125,23 @@ const BookModal = ({setModalVisible}) => {
       </Modal>
       <Pressable
         style={{width:30,height:30, backgroundColor:'white'}}
-        onPress={() => setBookModalVisible(true)}
+        onPress={async (e) => {
+          e.preventDefault();
+          
+          const bookingData = {
+            id:item.id,
+            image:item.image,
+            price:item.price,
+            totalPrice: Math.round(Math.PI*2000),
+            checkInDate:2,
+            checkOutDate:9,
+            location:item.location,
+            detailsDescription:item.detailsDescription
+          }
+          AddVilla(bookingData)
+          //console.log(item.image)
+          console.log('item from yes');
+          setBookModalVisible(true)}}
       >
        <Text style={styles.textStyle}>YES</Text>
       </Pressable>

@@ -3,8 +3,9 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import BookIcon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 import BookModal from "./BookModal";
-const ConfirmModal = () => {
+const ConfirmModal = ({item}) => {
   const [modalVisible, setModalVisible] = useState(false);
+
   const navigation = useNavigation();
   return (
     <View style={styles.centeredView}>
@@ -29,12 +30,13 @@ const ConfirmModal = () => {
             </Pressable>
             <Pressable
               style={styles.Confirmbutton}
-              onPress={() => (setModalVisible(!modalVisible)
+              onPress={() => {setModalVisible(!modalVisible);
                // navigation.navigate("BookModal", { name: "BookModal"})
-              
-             )}  
+              console.log(item);
+              console.log('from confirmmodal')
+              }}  
             >
-               <BookModal setModalVisible={setModalVisible} modalVisible={true}></BookModal>
+               <BookModal item = {item} setModalVisible={setModalVisible} modalVisible={true}></BookModal>
             </Pressable>
             </View>
           </View>
