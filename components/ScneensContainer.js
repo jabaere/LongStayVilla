@@ -24,7 +24,7 @@ const ScneensContainer = ({}) => {
   
   return (
     <Tab.Navigator
-      screenOptions={({ route,navigation }) => ({
+      screenOptions={({ route,navigation,order }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           let menuIcon;
@@ -43,7 +43,7 @@ const ScneensContainer = ({}) => {
           return <IconHome name={iconName} size={size} color={color} />;
         },
         tabBarHideOnKeyboard: true,
-        backBehavior:'order',
+      
         tabBarActiveTintColor: "#B2002D",
         tabBarInactiveTintColor: "gray",
         headerShown:
@@ -67,7 +67,7 @@ const ScneensContainer = ({}) => {
         },
         headerLeft: () => (
           <HeaderIcon
-            onPress={() => navigation.navigate({ name: 'Home', merge: true })}
+            onPress={() => navigation.goBack()}
             name="arrow-back-ios"
             color="#B2002D"
             size={20}
@@ -89,7 +89,9 @@ const ScneensContainer = ({}) => {
           ),
           route.name === "Location" ? <SearchBar /> : null
         ),
+        
       })}
+      backBehavior='history'
     >
       <Tab.Screen
         name="FirstScreen"
