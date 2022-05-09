@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { Text, View, StyleSheet, Image, TouchableOpacity,Alert  } from "react-native";
 import {
   useFonts,
   Montserrat_500Medium,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
-
 import Icon from "react-native-vector-icons/Ionicons";
 import { AddVilla } from "../api/data";
-import AuthContext from "../context/ContextApi";
+import { useNavigation } from "@react-navigation/native";
+
 const Villa = ({ item, handleMore }) => {
-  const { bookingModal, handleBookingButton } = useContext(AuthContext);
+ 
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Image source={item.image} style={styles.image} />
@@ -39,7 +40,7 @@ const Villa = ({ item, handleMore }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button2}
-          onPress={(e) => {
+          onPress={async (e) => {
             e.preventDefault();
 
             const bookingData = {
@@ -52,8 +53,24 @@ const Villa = ({ item, handleMore }) => {
               location: item.location,
               detailsDescription: item.detailsDescription,
             };
-            AddVilla(bookingData);
-            handleBookingButton(true);
+            
+            Alert.alert(
+              "Booking",
+              "Are you shure you want to Book Villa?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => (
+                  AddVilla(bookingData),
+                  navigation.navigate("Booking", { name: "Booking" })
+                  )}
+              ]
+            );
+            
+         
           }}
         >
           <Text
@@ -66,6 +83,7 @@ const Villa = ({ item, handleMore }) => {
           </Text>
         </TouchableOpacity>
       </View>
+    
     </View>
   );
 };

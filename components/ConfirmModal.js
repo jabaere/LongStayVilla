@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import BookIcon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
@@ -7,7 +7,9 @@ import AuthContext from "../context/ContextApi";
 const ConfirmModal = ({ item }) => {
   const { bookingModal, handleBookingButton } = useContext(AuthContext);
   const [modalVisible, setModalVisible] = useState(bookingModal);
+  useEffect(()=>{
 
+  },[bookingModal])
   const navigation = useNavigation();
   return (
     <View style={styles.centeredView}>

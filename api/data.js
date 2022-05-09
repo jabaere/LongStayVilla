@@ -59,7 +59,7 @@ export const Villa_API = [
    },
    {
       id:6, 
-      Image:require("./images/006_villa.jpg"), 
+      image:require("./images/006_villa.jpg"), 
       description:'An ultra-exclusive mountain home Ranch-inspired luxury living',
       price:'$1200',
       location:'Sagarejo',

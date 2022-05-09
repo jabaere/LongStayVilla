@@ -22,7 +22,7 @@ const BookingDetailsPage = ({ item }) => {
   useEffect(() => {
     //console.log(item)
     //console.log('itemdata')
-  });
+  },[item]);
   return (
     <View>
       <View style={{ justifyContent: "center", alignItems: "center" }}>
