@@ -1,55 +1,119 @@
-import React,{useState,useEffect} from 'react'
-import { Text, View, StyleSheet,Image,Button,TouchableOpacity,TextInput,SafeAreaView,FlatList} from 'react-native';
+import React, { useState, useEffect, useContext } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import {
   useFonts,
   Montserrat_500Medium,
   Montserrat_700Bold,
-  
 } from "@expo-google-fonts/montserrat";
-import { useNavigation } from '@react-navigation/native';
-import { Villa_API } from '../api/data';
-import FilterIcon from "react-native-vector-icons/Feather";
-
-var data = []
-export const FilteredData = ({item}) => {
-  return(
-    <View style={{width:'100%',alignItems:'center',alignContent:'center',justifyContent:'center'}}>
-       <View style={{justifyContent:'center',alignItems:'center'}}>
-         <Image source={item.image} style={styles.image}/>
-        </View>
-    </View> 
-  )
-}
-
-export const SearchBar = () => {
-  const [search,setSearch] = useState('')
-  useState(()=> {
-    console.log(search + "dsadda")
-  },[setSearch])
-  data = Villa_API.filter(item=> item.location.includes(search)).map(item => item)
-  return(
-    <View style={{alignItems:'center',alignContent:'center',justifyContent:'flex-start',flexDirection:'row'}}>
-        <TextInput style={{width:'100%',height:30,borderRadius:50,backgroundColor:'gray'}} onChangeText={text => setSearch(text)} defaultValue={search}/>
-        <FilterIcon name='filter' size={24} color='gray'/>
+import { useNavigation } from "@react-navigation/native";
+import { Villa_API } from "../api/data";
+import AuthContext from "../context/ContextApi";
+var data = [];
+export const FilteredData = ({ item, handleItem }) => {
+  return (
+    <View>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <TouchableOpacity
+          onPress={(id) => handleItem({ item })}
+          style={{ width: "100%" }}
+        >
+          <Image source={item.image} style={styles.image} />
+        </TouchableOpacity>
+      </View>
     </View>
-  )
-}
+  );
+};
+
+const NotFound = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        fontFamily: "Montserrat_700Bold",
+      }}
+    >
+      <Text style={{ fontSize: 32 }}>Nothing was found!</Text>
+    </View>
+  );
+};
 
 export const Location = () => {
+  const [data, setData] = useState([]);
+  const navigation = useNavigation();
+  const { searchText } = useContext(AuthContext);
+  const handleItem = ({ item }) => {
+    navigation.navigate("Details", {
+      name: "Details",
+      itemId: item.id,
+      price: item.price,
+    }),
+      console.log("hadlemore" + " " + item.id);
+  };
+  const searchFilter = (text) => {
+    if (text) {
+      setData(
+        Villa_API.filter((item) =>
+          item.location.toLocaleLowerCase().includes(text.toLowerCase())
+        ).map((item) => item)
+      );
+    }
+  };
+
+  useEffect(() => {
+    console.log(searchText);
+    if (!searchText) {
+      setData(Villa_API);
+    } else {
+      searchFilter(searchText);
+    }
+    console.log(data.length + " " + "data.length");
+  }, [searchText]);
   return (
-    <View style={{flex:1,backgroundColor:'white'}}>
-    <FlatList
-    data={data}
-    renderItem={({ item }) => <FilteredData item={item}/>}
-    
-    keyExtractor={item => item.id}
-    
-    />
-    <SearchBar />
-    <FlatList/>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      {data.length > 0 ? (
+        <>
+          <FlatList
+            data={data}
+            renderItem={({ item }) => (
+              <FilteredData item={item} handleItem={handleItem} />
+            )}
+            keyExtractor={(item) => item.id}
+          />
+
+          <FlatList />
+        </>
+      ) : (
+        <NotFound />
+      )}
     </View>
-  )
-}
+  );
+};
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginVertical: 2,
+  },
 
-              
+  image: {
+    margin: 2,
+    marginTop: 5,
+    height: 250,
+    width: "98%",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 2,
+    resizeMode: "cover",
+  },
+});

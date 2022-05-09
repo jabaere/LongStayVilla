@@ -1,27 +1,30 @@
-import React from 'react'
-import { Text, View, StyleSheet,FlatList } from 'react-native';
-import  Villa  from '../layout/Villa';
-import { Villa_API } from '../api/data';
+import React from "react";
+import { View, StyleSheet, FlatList } from "react-native";
+import Villa from "../layout/Villa";
+import { Villa_API } from "../api/data";
 import { useNavigation } from "@react-navigation/native";
 
 export const Home = () => {
-  
   const navigation = useNavigation();
 
   return (
-    <View  style={styles.container}>
-
+    <View style={styles.container}>
       <FlatList
-          data={Villa_API}
-          renderItem={({ item }) => <Villa item={item} handleMore={(id)=>(
-            navigation.navigate("Details", { name: "Details",itemId:item.id,price:item.price }),
-          console.log('hadlemore' + ' ' + item.id)
-         
-          )} 
-         
+        data={Villa_API}
+        renderItem={({ item }) => (
+          <Villa
+            item={item}
+            handleMore={(id) => (
+              navigation.navigate("Details", {
+                name: "Details",
+                itemId: item.id,
+                price: item.price,
+              }),
+              console.log("hadlemore" + " " + item.id)
+            )}
           />
-          }
-         keyExtractor={item => item.id}
+        )}
+        keyExtractor={(item) => item.id}
       />
       {/*
         Villa_API.map((item,index) => (
@@ -34,27 +37,20 @@ export const Home = () => {
               location={item.location}
               />
         ))
-      */
-      }
-      
-      
+      */}
     </View>
-  )
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    padding:10,
-    marginTop:30,
-    
-    
-    
+    padding: 10,
+    marginTop: 30,
   },
   paragraph: {
     margin: 24,
     fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

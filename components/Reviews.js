@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import {
   useFonts,
   Montserrat_500Medium,
@@ -25,7 +21,7 @@ export const Reviews = () => {
             style={{
               justifyContent: "center",
               alignContent: "center",
-              alignItems:'center',
+              alignItems: "center",
               width: "80%",
               //height:'20%',
               marginTop: 180,
@@ -37,10 +33,9 @@ export const Reviews = () => {
                 fontSize: 20,
               }}
             >
-             Reviews
+              Reviews
             </Text>
           </View>
-         
         </View>
       ) : null}
     </View>
@@ -55,5 +50,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
- 
 });

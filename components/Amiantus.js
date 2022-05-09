@@ -1,22 +1,18 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import {
   useFonts,
   Montserrat_500Medium,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
-import { useNavigation } from "@react-navigation/native";
+
 
 export const Amiantus = () => {
   let [fontsLoaded] = useFonts({
     Montserrat_500Medium,
     Montserrat_700Bold,
   });
-  const navigation = useNavigation();
+ 
   return (
     <View style={styles.container}>
       {fontsLoaded ? (
@@ -25,7 +21,7 @@ export const Amiantus = () => {
             style={{
               justifyContent: "center",
               alignContent: "center",
-              alignItems:'center',
+              alignItems: "center",
               width: "80%",
               //height:'20%',
               marginTop: 180,
@@ -37,10 +33,9 @@ export const Amiantus = () => {
                 fontSize: 20,
               }}
             >
-             Amiantus
+              Amiantus
             </Text>
           </View>
-         
         </View>
       ) : null}
     </View>
@@ -54,7 +49,5 @@ const styles = StyleSheet.create({
     //backgroundColor:'#B2002D',
     justifyContent: "center",
     alignItems: "center",
-   
   },
- 
 });

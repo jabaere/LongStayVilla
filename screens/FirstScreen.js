@@ -1,11 +1,5 @@
-import React, { useEffect} from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import React, { useEffect } from "react";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Image_data } from "../api/data";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/AntDesign";
@@ -14,8 +8,6 @@ import {
   Montserrat_500Medium,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
-//AiOutlineArrowRight
-//import { Navigate, useNavigate,Router } from 'react-router';
 
 export const FirstScreen = () => {
   let [fontsLoaded] = useFonts({
@@ -56,7 +48,7 @@ export const FirstScreen = () => {
                   color: "white",
                   fontFamily: "Montserrat_500Medium",
                   fontSize: 12,
-                  margin:2
+                  margin: 2,
                 }}
               >
                 GET STARTED
@@ -69,24 +61,6 @@ export const FirstScreen = () => {
     </View>
   );
 };
-
-/*
- <View style={styles.container}>
-         
-       <View style={styles.headerContainer}>
-           <Text style={styles.headerTitle}>LongStay Villa</Text>
-       </View>
-       <View style={styles.imageContainer}>
-       <Image style={styles.image} source={Image_data.Image} />
-       </View>
-       <View style={styles.buttonContainer}>
-          <TouchableOpacity>
-              <Text style={styles.button}>GET STARTED</Text>
-          </TouchableOpacity>
-       </View>
-
-
-*/
 
 const styles = StyleSheet.create({
   container: {

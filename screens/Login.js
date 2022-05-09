@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  SafeAreaView
 } from "react-native";
 import {
   useFonts,
@@ -44,14 +43,9 @@ export const Login = () => {
           </View>
           {/* textinput component cause error ---  */}
           <Text style={styles.textLabel}>Email</Text>
-          {<TextInput
-            style={styles.input}
-            />}
+          {<TextInput style={styles.input} />}
           <Text style={styles.textLabel}>Password</Text>
-          {<TextInput
-            style={styles.input}
-          />}
-
+          {<TextInput style={styles.input} />}
 
           <TouchableOpacity
             style={styles.button}
