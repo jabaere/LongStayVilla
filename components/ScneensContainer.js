@@ -20,11 +20,11 @@ const MyModalBackgroundScreen = () => {
   return null;
 };
 
-const ScneensContainer = () => {
-  const navigation = useNavigation();
+const ScneensContainer = ({}) => {
+  
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      screenOptions={({ route,navigation }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           let menuIcon;
@@ -40,11 +40,10 @@ const ScneensContainer = () => {
           } else {
             menuIcon = "menu-outline";
           }
-
-          // You can return any component that you like here!
           return <IconHome name={iconName} size={size} color={color} />;
         },
         tabBarHideOnKeyboard: true,
+        backBehavior:'order',
         tabBarActiveTintColor: "#B2002D",
         tabBarInactiveTintColor: "gray",
         headerShown:
@@ -68,7 +67,7 @@ const ScneensContainer = () => {
         },
         headerLeft: () => (
           <HeaderIcon
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate({ name: 'Home', merge: true })}
             name="arrow-back-ios"
             color="#B2002D"
             size={20}
