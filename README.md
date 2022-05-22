@@ -1,4 +1,4 @@
-# Sample Snack app
+#  Villa Rental App 
 ## For Quick View Please Visit:
 
 # https://snack.expo.dev/@jabaere/github.com-jabaere-longstayvilla
